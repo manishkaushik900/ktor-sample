@@ -1,11 +1,9 @@
 package com.example.plugins
 
+import com.fasterxml.jackson.databind.SerializationFeature
 import io.ktor.serialization.jackson.*
-import com.fasterxml.jackson.databind.*
-import io.ktor.server.response.*
-import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.application.*
-import io.ktor.server.routing.*
+import io.ktor.server.plugins.contentnegotiation.*
 
 data class Recipe(val id: Int, val title: String, val image: String, val ingredients: List<String>, val instructions: String)
 
@@ -15,7 +13,7 @@ fun Application.configureSerialization() {
             enable(SerializationFeature.INDENT_OUTPUT)
         }
     }
-    routing {
+   /* routing {
         get("/json/jackson") {
             call.respond(mapOf("hello" to "world"))
         }
@@ -59,5 +57,5 @@ fun Application.configureSerialization() {
 
             call.respond(mapOf("status" to "success", "message" to "Recipes retrieved successfully", "data" to mapOf("recipes" to recipes)))
         }
-    }
+    }*/
 }
